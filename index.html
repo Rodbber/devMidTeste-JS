@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* remove arrows input number */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="flex flex-col items-center space-y-5">
+            <div class="p-2 shadow-md">
+                <h2 class="font-bold">Calculator</h2>
+                <div class="h-10 text-right bg-gray-100">
+                    <span id="acc"></span>
+                    <span id="signal"></span>
+                </div>
+                <input id="input-calculator" type="text" class="w-full px-2 text-right">
+                <div class="flex">
+                    <button id="clean-calculator"
+                        class="w-10 mr-1 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">CE</button>
+                    <div id="buttons-calculator" class="grid grid-cols-3 gap-1">
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">1</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">2</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">3</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">4</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">5</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">6</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">7</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">8</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">9</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">.</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">0</button>
+                        <button id="igual"
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">=</button>
+                    </div>
+                    <div id="buttons-operators" class="grid grid-cols-1 gap-1 ml-1">
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">/</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">*</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">-</button>
+                        <button
+                            class="w-10 transition duration-150 ease-in-out bg-gray-300 shadow hover:shadow-2xl active:shadow-none active:bg-gray-200 active:scale-90">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="font-bold">Is it a prime number?</h2>
+                <div class="my-2 w-60">
+                    <p class="text-xs">Type an integer in the input and click "check" to check if it is a prime or not
+                    </p>
+                </div>
+                <input type="number" id="is-prime" class="border">
+                <button id="check-is-prime"
+                    class="px-1 font-bold text-white transition duration-150 ease-in-out bg-blue-500 border-2 border-blue-700 rounded shadow hover:shadow-2xl active:shadow-none active:bg-blue-400 active:scale-90">check</button>
+                <div class="h-14">
+                    <p id="r-is-prime"></p>
+                    <div id="ten-prime-div" class="hidden">
+                        <p>The first 10 prime numbers:</p>
+                        <p id="ten-prime"></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+                <h2 class="font-bold">factorial calculation</h2>
+                <div class="my-2 w-60">
+                    <p class="text-xs">Type an integer in the input and click "check" to get its factorial
+                    </p>
+                </div>
+                <input type="text" id="factorial-number" class="border">
+                <button id="check-factorial"
+                    class="px-1 font-bold text-white transition duration-150 ease-in-out bg-blue-500 border-2 border-blue-700 rounded shadow hover:shadow-2xl active:shadow-none active:bg-blue-400 active:scale-90">check</button>
+                <div class="flex">
+                    Res: <span id="r-factorial" class="ml-2"></span>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="font-bold">Is it a palindrome?</h2>
+                <div class="my-2 w-60">
+                    <p class="text-xs">
+                        Type a word in the input and click "check" to check if it is a palindrome or not (same word
+                        backwards)</p>
+                </div>
+                <input type="text" id="palindrome-word" class="border">
+                <button id="check-palindrome"
+                    class="px-1 font-bold text-white transition duration-150 ease-in-out bg-blue-500 border-2 border-blue-700 rounded shadow hover:shadow-2xl active:shadow-none active:bg-blue-400 active:scale-90">check</button>
+                    <div class="h-10">
+                        <span id="r-palindrome"></span>
+                    </div>
+            </div>
+
+            <div>
+                <h2 class="font-bold">Table</h2>
+                <div class="my-2 w-60">
+                    <p class="text-xs">
+                        Enter a number from 1 to 10 and check your table and click "check" to check your table.</p>
+                </div>
+                <input type="number" id="table-number" class="border">
+                <button id="check-table"
+                    class="px-1 font-bold text-white transition duration-150 ease-in-out bg-blue-500 border-2 border-blue-700 rounded shadow hover:shadow-2xl active:shadow-none active:bg-blue-400 active:scale-90">check</button>
+                <div class="text-center bg-gray-100 h-60 w-60">
+                    <span id="r-table"></span>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="font-bold">Vowel counter</h2>
+                <div class="my-2 w-60">
+                    <p class="text-xs">Type a sentence and click "check" and the result will be the number of vowels in
+                        the sentence.</p>
+                </div>
+                <input type="text" id="vowel-phrase" class="border">
+                <button id="check-vowel"
+                    class="px-1 font-bold text-white transition duration-150 ease-in-out bg-blue-500 border-2 border-blue-700 rounded shadow hover:shadow-2xl active:shadow-none active:bg-blue-400 active:scale-90">check</button>
+                <div class="h-10">
+                    <span id="r-vowel"></span>
+                </div>
+
+            </div>
+
+            <div>
+                <h2 class="font-bold">
+                    Average grade calculation</h2>
+                <div class="flex flex-col">
+                    <div class="flex space-x-2">
+                        <span>Note 1</span>
+                        <input type="number" id="grade-number-1" class="border">
+                    </div>
+                    <div class="flex space-x-2">
+                        <span>Note 2</span>
+                        <input type="number" id="grade-number-2" class="border">
+                    </div>
+                    <div class="flex space-x-2">
+                        <span>Note 3</span>
+                        <input type="number" id="grade-number-3" class="border">
+                    </div>
+                </div>
+                <button id="check-grade"
+                    class="w-full px-1 mt-1 font-bold text-white transition duration-150 ease-in-out bg-blue-500 border-2 border-blue-700 rounded shadow hover:shadow-2xl active:shadow-none active:bg-blue-400 active:scale-90">check</button>
+                <div>
+                    Average: <span id="r-grade"></span>
+                </div>
+
+            </div>
+
+            <div>
+                <h2 class="font-bold">Investment calculation</h2>
+                <div class="flex flex-col">
+                    <div class="flex flex-col">
+                        <span>Initial capital</span>
+                        <input type="number" id="interest-capital" class="w-full border">
+                    </div>
+                    <div class="flex flex-col">
+                        <span>Rate (%)</span>
+                        <input type="number" id="interest-tax" class="w-full border">
+                    </div>
+                    <div class="flex flex-col">
+                        <span>Time (months)</span>
+                        <input type="number" id="interest-time" class="w-full border">
+                    </div>
+                </div>
+                <button id="check-interest"
+                    class="w-full px-1 mt-1 font-bold text-white transition duration-150 ease-in-out bg-blue-500 border-2 border-blue-700 rounded shadow hover:shadow-2xl active:shadow-none active:bg-blue-400 active:scale-90">check</button>
+                <div class="h-10">
+                    Final value: <span id="r-interest"></span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="py-2 border-t-2">
+        <div class="flex justify-center space-x-2">
+            <a href="mailto:rodbberz@gmail.com"><img
+                    src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white"
+                    target="_blank"></a>
+            <a href="https://www.linkedin.com/in/rodrigo-barbosa-bertini" target="_blank"><img
+                    src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"
+                    target="_blank"></a>
+            <!-- <a href="https://rodbber.github.io" target="_blank"><img
+                    src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a> -->
+            <a href="https://github.com/Rodbber" target="_blank"><img
+                    src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a>
+            <div>
+                build by <a href="https://rodbber.github.io" target="_blank" class="font-bold text-blue-500 underline">Rodbber</a>
+            </div>
+        </div>
+
+    </footer>
+    <script>
+        /* calculator */
+        document.querySelector('#input-calculator').addEventListener('keypress', function (e) {
+            if (e.key == '.') {
+                console.log(e.target.value)
+                if ((e.target.value.match(new RegExp(/\./, "g")) || []).length == 1) {
+                    e.preventDefault();
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            if (isNaN(e.key)) {
+                e.preventDefault();
+                return false;
+            }
+        })
+
+        function eventButtonsCalculator() {
+            const buttons = document.querySelector('#buttons-calculator').querySelectorAll('button');
+            let operator = '';
+            let acumulador = 0;
+            let last = '';
+            let historic = [];
+            buttons.forEach((button) => {
+                button.addEventListener('click', function (e) {
+                    if (e.target.innerHTML == '.' && (document.querySelector('#input-calculator').value.match(new RegExp(/\./, "g")) || []).length == 1) {
+                        return
+                    }
+                    if (e.target.id == 'igual') {
+                        const valor = Number(document.querySelector('#input-calculator').value)
+                        console.log(valor, acumulador, operator)
+                        if (!operator) {
+                            return
+                        }
+                        let save = `${acumulador} ${operator} ${valor} = `
+                        acumulador = calculator(valor, acumulador, operator)
+                        historic.push(save + acumulador.toString())
+                        document.querySelector('#input-calculator').value = acumulador.toString()
+                        document.querySelector('#acc').innerHTML = acumulador.toString()
+                        document.querySelector('#signal').innerHTML = ''
+                        return
+                    }
+                    if (last == 'operator') {
+                        document.querySelector('#input-calculator').value = ''
+                    }
+                    document.querySelector('#input-calculator').value += e.target.innerHTML
+                    last = 'number'
+                })
+            })
+            const buttonsOperatos = document.querySelector('#buttons-operators').querySelectorAll('button');
+            buttonsOperatos.forEach((button) => {
+                button.addEventListener('click', function (e) {
+                    last = 'operator'
+                    acumulador = Number(document.querySelector('#input-calculator').value)
+                    operator = e.target.innerHTML
+                    document.querySelector('#acc').innerHTML = acumulador.toString()
+                    document.querySelector('#signal').innerHTML = operator
+                })
+            })
+            document.querySelector('#clean-calculator').addEventListener('click', function (e) {
+                operator = '';
+                acumulador = 0;
+                last = '';
+                document.querySelector('#input-calculator').value = ''
+                document.querySelector('#acc').innerHTML = ''
+                document.querySelector('#signal').innerHTML = ''
+            })
+        }
+        eventButtonsCalculator()
+
+        function calculator(number, prev, operator) {
+            switch (operator) {
+                case '+':
+                    return prev + number
+                case '-':
+                    return prev - number
+                case '/':
+                    return number != 0 ? prev / number : prev != 0 ? 'impossible' : 'undefined'
+                case '*':
+                    return number * prev
+                default:
+                    break;
+            }
+        }
+        /* end calculator */
+        /* prime */
+        document.querySelector('#check-is-prime').addEventListener('click', function (e) {
+            const number = document.querySelector('#is-prime').value
+            document.querySelector('#r-is-prime').innerHTML = ''
+            if (!number) {
+                document.querySelector('#is-prime').focus()
+                document.querySelector('#r-is-prime').innerHTML = 'Please enter a number'
+                return
+            }
+            if (isNaN(number.toString())) {
+                return
+            }
+            document.querySelector('#r-is-prime').innerHTML = isPrime(number) ? `number ${number} is a prime` : `The number ${number} is not a prime`
+            document.querySelector('#ten-prime-div').classList.remove('hidden')
+            document.querySelector('#ten-prime').innerHTML = tenFirtsPrimes().join(', ')
+        })
+
+
+
+        function isPrime(number) {
+            // todo inteiro positivo
+            number = Math.abs(Math.trunc(number))
+            if (number == 1 || number == 0) {
+                return false;
+            }
+            for (let i = 2; i <= number / 2; i++) {
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function tenFirtsPrimes() {
+            let contador = 0;
+            let i = 0;
+            const primes = []
+            while (contador < 10) {
+                if (isPrime(i)) {
+                    contador++;
+                    primes.push(i)
+                }
+                i++;
+            }
+            return primes
+        }
+        /* end prime */
+        /* factorial */
+        document.querySelector('#check-factorial').addEventListener('click', function (e) {
+            const number = document.querySelector('#factorial-number').value
+            if (isNaN(number.toString())) {
+                return
+            }
+            document.querySelector('#r-factorial').innerHTML = factorial(number)
+        })
+
+        function factorial(number) {
+            // verifica sinal
+            let signal = number < 0 ? -1 : 1
+            // pega absoluto
+            number = Math.abs(number)
+            return number == 1 || number == 0 ? 1 * signal : (number * factorial(number - 1)) * signal
+        }
+        /* end factorial */
+        /* palindrome */
+        document.querySelector('#check-palindrome').addEventListener('click', function (e) {
+            const word = document.querySelector('#palindrome-word').value
+            if (!word) {
+                document.querySelector('#palindrome-word').focus()
+                document.querySelector('#r-palindrome').innerHTML = 'Please enter a word'
+                return
+            }
+            document.querySelector('#r-palindrome').innerHTML = isPalindrome(word) ? "It's a palindrome" : "It's not a palindrome"
+        })
+
+        function isPalindrome(word) {
+            let reverse = word.split('').reverse().join('')
+            return reverse == word
+        }
+        /* end palindrome */
+        /* table */
+        document.querySelector('#check-table').addEventListener('click', function (e) {
+            let number = document.querySelector('#table-number').value
+            if (!number) {
+                number = 0
+            }
+            if (isNaN(number.toString())) {
+                return
+            }
+            document.querySelector('#r-table').innerHTML = table(number).map((v, index) => `<p>${number} x ${index + 1} = ${v}</p>`).join('')
+        })
+
+        function table(number) {
+            const table = [];
+            for (let i = 1; i <= 10; i++) {
+                table.push(number * i)
+            }
+            return table;
+        }
+        /* end palindrome */
+        /* vowel */
+        document.querySelector('#check-vowel').addEventListener('click', function (e) {
+            const phrase = document.querySelector('#vowel-phrase').value
+            document.querySelector('#r-vowel').innerHTML = `${vowelCounter(phrase)} vowels`
+        })
+
+        function vowelCounter(phrase) {
+            return (phrase.match(new RegExp("a|A|e|E|i|I|o|O|u|U", "g")) || []).length
+        }
+        /* end vowel */
+        /* grade */
+        document.querySelector('#check-grade').addEventListener('click', function (e) {
+            const number1 = document.querySelector('#grade-number-1').value
+            const number2 = document.querySelector('#grade-number-2').value
+            const number3 = document.querySelector('#grade-number-3').value
+            if (isNaN(number1.toString()) || isNaN(number2.toString()) || isNaN(number3.toString())) {
+                return
+            }
+
+            document.querySelector('#r-grade').innerHTML = gradeAverage([Number(number1), Number(number2), Number(number3)]).toFixed(2)
+        })
+
+        function gradeAverage(grades) {
+            // soma os valores e divide pelo total para ter a média
+            return grades.reduce((acc, at) => acc + at, 0) / grades.length
+        }
+        /* end grade */
+        /* interest */
+        document.querySelector('#check-interest').addEventListener('click', function (e) {
+            const c = document.querySelector('#interest-capital').value
+            const tx = document.querySelector('#interest-tax').value
+            const t = document.querySelector('#interest-time').value
+            if (isNaN(c.toString()) || isNaN(tx.toString()) || isNaN(t.toString())) {
+                return
+            }
+
+            document.querySelector('#r-interest').innerHTML = interestCalculation(c, tx / 100, t).toLocaleString('en-US', {
+                currency: 'USD',
+                style: 'currency'
+            })
+        })
+
+        function interestCalculation(c, tx, t) {
+            // capital, rate, time
+            return c * Math.pow(1 + tx, t)
+        }
+        /* end interest */
+    </script>
+</body>
+
+</html>
